@@ -3,44 +3,32 @@ from bs4 import BeautifulSoup as bs
 
 class ugent:
     def __init__(self):
-        self.host = 'https://www.useragentstring.com/pages/'
+        self.source = bs(r.get('https://www.useragentstring.com/pages/Browserlist/').text, 'html.parser')
+        self.useragent = self.get_browser_name()
+        self.get_ua()
 
-    def get_string(self, endpoint, patch):
-        result = []
-        web = bs(r.get(self.host + endpoint).text, 'html.parser')
-        for tag in web.find_all('a', href=lambda href: href and patch in href):
-            result.append(tag.text)
+    def get_browser_name(self):
+        result = {}
+        for x in self.source.find_all('img', {'class':'uaIcon', 'alt':True}):
+            result.update({x['alt']:[]})
 
         return result
-        
-    def ChromePlus(self, ua=[]):
-        if len(ua) == 0:ua.extend(self.get_string('ChromePlus/', '/ChromePlus'))
-        
-        acak = random.choice(ua)
-        return acak
 
-    def Chrome(self, ua=[]):
-        if len(ua) == 0:ua.extend(self.get_string('Chrome/', '/Chrome'))
-
-        acak = random.choice(ua)
-        return acak
-
-    def Firefox(self, ua=[]):
-        if len(ua) == 0:ua.extend(self.get_string('Firefox/', '/Firefox'))
-        
-        acak = random.choice(ua)
-        return acak
+    def get_ua(self):
+        for key in self.useragent:
+            result = []
+            for ua in self.source.find_all('a', href=lambda href: href and '/'+key in href):
+                result.append(ua.text)
+            self.useragent[key] = result
     
-    def Opera(self, ua=[]):
-        if len(ua) == 0:ua.extend(self.get_string('Opera/', '/Opera'))
-        
-        acak = random.choice(ua)
-        return acak
+    def random(self, count=1, combine=[]):
+        for value in self.useragent.values():
+            combine.extend(value)
 
-    def Arora(self, ua=[]):
-        if len(ua) == 0:ua.extend(self.get_string('Arora/', '/Arora'))
-        
-        acak = random.choice(ua)
-        return acak
+        result = random.sample(combine, int(count))
+        return result
 
-    
+    def browser(self, name = 'Chrome'):
+        result = random.choice(self.useragent[name])
+        return result
+        
