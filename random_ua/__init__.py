@@ -5,11 +5,42 @@ class ugent:
     def __init__(self):
         self.host = 'https://www.useragentstring.com/pages/'
 
-    def ChromePlus(self, result = []):
-        if len(result) == 0:
-            web = bs(r.get(self.host + 'ChromePlus/').text, 'html.parser')
-            for tag in web.find_all('a', href=lambda href: href and '/ChromePlus' in href):
-                result.append(tag.text)
+    def get_string(self, endpoint, patch):
+        result = []
+        web = bs(r.get(self.host + endpoint).text, 'html.parser')
+        for tag in web.find_all('a', href=lambda href: href and patch in href):
+            result.append(tag.text)
+
+        return result
         
-        ugent = random.choice(result)
-        return ugent
+    def ChromePlus(self, ua=[]):
+        if len(ua) == 0:ua.extend(self.get_string('ChromePlus/', '/ChromePlus'))
+        
+        acak = random.choice(ua)
+        return acak
+
+    def Chrome(self, ua=[]):
+        if len(ua) == 0:ua.extend(self.get_string('Chrome/', '/Chrome'))
+
+        acak = random.choice(ua)
+        return acak
+
+    def Firefox(self, ua=[]):
+        if len(ua) == 0:ua.extend(self.get_string('Firefox/', '/Firefox'))
+        
+        acak = random.choice(ua)
+        return acak
+    
+    def Opera(self, ua=[]):
+        if len(ua) == 0:ua.extend(self.get_string('Opera/', '/Opera'))
+        
+        acak = random.choice(ua)
+        return acak
+
+    def Arora(self, ua=[]):
+        if len(ua) == 0:ua.extend(self.get_string('Arora/', '/Arora'))
+        
+        acak = random.choice(ua)
+        return acak
+
+    
