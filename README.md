@@ -31,7 +31,25 @@ print(ugent.browser('Chrome'))
 
 # Browser list!
 - ABrowse
-- America Online Browser                                                                  AmigaVoyager                                                                            AOL                                                                                     Arora                                                                                   Avant Browser                                                                           Beonex                                                                                  Browzar                                                                                 Camino                                                                                  Chimera                                                                                 Chrome                                                                                  CometBird                                                                               Crazy Browser                                                                           Cyberdog                                                                                DeskBrowse                                                                              Dillo                                                                                   Dooble                                                                                  Edge                                                                                    Elinks                                                                                  Enigma Browser                                                     
+- America Online Browser
+- AmigaVoyager
+- AOL
+- Arora
+- Avant Browser
+- Beonex
+- Browzar
+- Camino
+- Chimera
+- Chrome
+- CometBird
+- Crazy Browser
+- Cyberdog
+- DeskBrowse
+- Dillo
+- Dooble
+- Edge
+- Elinks
+- Enigma Browser
 - Epiphany                              
 - Firebird           
 - Firefox                   
