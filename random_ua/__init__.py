@@ -1,8 +1,6 @@
 import requests as r, random
 from bs4 import BeautifulSoup as bs
 
-__version__ = '1.0.0'
-
 class ugent:
     def __init__(self):
         self.host = 'https://www.useragentstring.com/pages/'
