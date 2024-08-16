@@ -7,7 +7,7 @@ pkg install git python
 pip install git+https://github.com/zelvdsk/random-ua/
 ```
 # How to use?
-```
+```py
 # Import modules
 import random_ua
 
